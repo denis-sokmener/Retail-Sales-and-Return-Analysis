@@ -10,7 +10,7 @@ Python (Pandas): Cleaning raw data, managing outliers, and aggregating the datas
 
 Power BI & DAX: Data modeling, establishing relational tables, and designing an interactive dashboard.
 
-Key Insights
+# Key Insights
 
 Tracked the Average Order Value and analyzed monthly revenue trends to identify the most and least profitable periods.
 
@@ -18,6 +18,6 @@ Evaluated category-based growth and profitability using Waterfall charts to dist
 
 Identified specific products with potential sizing or fitting issues by cross-referencing high return volumes with "Change Card" usage metrics.
 
-Future Work
+# Future Work
 
 Integrating a Time Series Forecasting model using tree-based algorithms (XGBoost/LightGBM) to predict future sales performance at the store and month level.
