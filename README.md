@@ -2,7 +2,7 @@
 
 This artificial dataset was provided as part of a case study for Mavi's long-term internship program. The primary goal is to analyze the retail sales data to uncover financial trends, evaluate return rates, and detect problematic products, ultimately creating data-driven category management strategies.
 
-Tech Stack & Tools
+# Tech Stack & Tools
 
 Excel: Initial data review, raw data storage, and preliminary checks.
 
