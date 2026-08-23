@@ -59,13 +59,17 @@ The processed tables were loaded into an interactive Power BI dashboard includin
 * An interactive month slicer for filtering all visuals at once
 
 ## Project Structure
-├── mavi_powerbi.Report/ # Power BI report definition (pages, visuals)
-├── mavi_powerbi.SemanticModel/ # Power BI data model (tables, measures, relationships)
-├── mavi_powerbi.pbip # Power BI project file — open this in Power BI Desktop
-├── mavi_powerbi.pdf # Static PDF export of the dashboard
-├── mavi.ipynb # Python data cleaning & analysis notebook
-├── graph1.png / graph2.png # Dashboard preview images
-└── README.md
+
+```text
+mavi_powerbi.Report/          Power BI report definition (pages, visuals)
+mavi_powerbi.SemanticModel/   Power BI data model (tables, measures, relationships)
+mavi_powerbi.pbip             Power BI project file - open this in Power BI Desktop
+mavi_powerbi.pdf              Static PDF export of the dashboard
+mavi.ipynb                    Python data cleaning & analysis notebook
+graph1.png                    Dashboard preview image 1
+graph2.png                    Dashboard preview image 2
+README.md                     This file
+```
 
 ## How to Run
 
