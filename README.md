@@ -6,7 +6,7 @@ This project is an end-to-end business intelligence workflow analyzing Mavi stor
 
 ![Detailed Analysis](graph1.png)
 
-![Key Performance Indicators](graph1.png)
+![Key Performance Indicators](graph2.png)
 
 ## Data Processing and Methodology
 
