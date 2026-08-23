@@ -1,23 +1,30 @@
-# Retail-Sales-and-Return-Analysis
+# Mavi Retail Sales and Return Analysis
 
-This artificial dataset was provided as part of a case study for Mavi's long-term internship program. The primary goal is to analyze the retail sales data to uncover financial trends, evaluate return rates, and detect problematic products, ultimately creating data-driven category management strategies.
+This project is an end-to-end business intelligence workflow analyzing Mavi store sales data using Python and Power BI. The objective goes beyond standard revenue tracking to identify product-level return trends, discount dependency, and inflation-adjusted volume growth.
 
-# Tech Stack & Tools
+## Dashboard Previews
 
-Excel: Initial data review, raw data storage, and preliminary checks.
+![Detailed Analysis](grafik_sayfa1_final2.jpg)
 
-Python (Pandas): Cleaning raw data, managing outliers, and aggregating the dataset for optimal Power BI performance.
+![Key Performance Indicators](grafik_sayfa2_final2.png)
 
-Power BI & DAX: Data modeling, establishing relational tables, and designing an interactive dashboard.
+## Data Processing and Methodology
 
-# Key Insights
+* Analyzed 34,000 transaction records spanning from February 2024 to January 2025.
+* Retained transactions with positive quantities but negative amounts to preserve inventory count and net revenue accuracy, as these likely represent gift card usage or system corrections.
+* Cross-referenced products with high return volumes and high exchange card usage to pinpoint potentially problematic items (e.g., sizing inaccuracies or fit defects).
+* Calculated growth rates based on net units sold rather than revenue to isolate true consumer demand shifts from inflation and price hikes.
+* Exported all processed aggregations into a single, multi-sheet Excel file optimized for Power BI data modeling.
 
-Tracked the Average Order Value and analyzed monthly revenue trends to identify the most and least profitable periods.
+## Key Insights
 
-Evaluated category-based growth and profitability using Waterfall charts to distinguish driving categories from underperforming ones.
+* **September:** The most commercially healthy month, featuring the highest revenue and lowest return rate, driven by strong organic demand.
+* **May:** The weakest month, characterized by the lowest revenue and the highest return rate, where nearly half of the sold items were returned.
+* **July:** Recorded the highest discount rates despite mid-range sales volume, indicating a heavy reliance on markdowns rather than natural demand.
+* **Average Order Value (AOV):** Steadily climbed from 838 TL in February to 1126 TL in January, showing increased customer spending per transaction regardless of total sales volume.
 
-Identified specific products with potential sizing or fitting issues by cross-referencing high return volumes with "Change Card" usage metrics.
+## Technologies Used
 
-# Future Work
-
-Integrating a Time Series Forecasting model using tree-based algorithms (XGBoost/LightGBM) to predict future sales performance at the store and month level.
+* **Data Preparation:** Python, Pandas
+* **Visualization:** Power BI
+* **Version Control:** Git, GitHub Project Structure (.pbip)
