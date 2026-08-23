@@ -1,0 +1,43 @@
+table Category_Growth
+	lineageTag: 37aba5e3-f516-4a25-96c0-5c0675084360
+
+	column SubCategoryClass
+		dataType: string
+		lineageTag: 3951a04a-fcf3-47a5-a570-1ba2454344b6
+		summarizeBy: none
+		sourceColumn: SubCategoryClass
+
+		annotation SummarizationSetBy = Automatic
+
+	column Quantity_Change
+		dataType: int64
+		formatString: 0
+		lineageTag: 02d2f520-5cc0-4975-a578-5f0c42b17c87
+		summarizeBy: sum
+		sourceColumn: Quantity_Change
+
+		annotation SummarizationSetBy = Automatic
+
+	column Growth_%
+		dataType: double
+		lineageTag: 5bad7035-7ea5-440a-b960-830c79f94297
+		summarizeBy: average
+		sourceColumn: Growth_%
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition Category_Growth = m
+		mode: import
+		source =
+				let
+				  Kaynak = Excel.Workbook(Web.Contents("https://stdyildizedu-my.sharepoint.com/personal/denis_sokmener_std_yildiz_edu_tr/Documents/Uygulamalar/Microsoft Power Query/Uploaded Files/mavi_powerbi_export.xlsx"), null, true),
+				  #"Gezinti 1" = Kaynak{[Item = "Category_Growth", Kind = "Sheet"]}[Data],
+				  #"Yükseltilen üst bilgiler" = Table.PromoteHeaders(#"Gezinti 1", [PromoteAllScalars = true]),
+				  #"Değiştirilen sütun türü" = Table.TransformColumnTypes(#"Yükseltilen üst bilgiler", {{"SubCategoryClass", type text}, {"Quantity_Change", Int64.Type}, {"Growth_%", type number}}, "tr")
+				in
+				  #"Değiştirilen sütun türü"
+
+	annotation PBI_ResultType = Table
+

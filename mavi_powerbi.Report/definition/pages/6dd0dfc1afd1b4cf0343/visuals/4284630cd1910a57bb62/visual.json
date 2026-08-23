@@ -1,0 +1,77 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
+  "name": "4284630cd1910a57bb62",
+  "position": {
+    "x": 494.90022172949,
+    "y": 360.79822616407984,
+    "z": 3004,
+    "height": 94.190687361419066,
+    "width": 146.87361419068736,
+    "tabOrder": 3004
+  },
+  "visual": {
+    "visualType": "slicer",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Category_Summary"
+                    }
+                  },
+                  "Property": "SubCategoryClass"
+                }
+              },
+              "queryRef": "Category_Summary.SubCategoryClass",
+              "nativeQueryRef": "SubCategoryClass",
+              "active": true
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "data": [
+        {
+          "properties": {
+            "mode": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Basic'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "general": [
+        {
+          "properties": {}
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "a87993128ec951e22eb4",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Category_Summary"
+              }
+            },
+            "Property": "SubCategoryClass"
+          }
+        },
+        "type": "Categorical"
+      }
+    ]
+  }
+}

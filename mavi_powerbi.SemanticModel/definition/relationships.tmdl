@@ -1,0 +1,21 @@
+relationship b6b62503-5169-47f4-8d20-e43112ca07cc
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Monthly_Trend.Date
+	toColumn: LocalDateTable_e2f1961f-808a-4399-9359-c3676a490fd0.Date
+
+relationship AutoDetected_4186d9b3-b158-4b48-8fd3-9c376778ef45
+	crossFilteringBehavior: bothDirections
+	fromColumn: Main_Data.StoreCode
+	toColumn: Store_Summary.StoreCode
+
+relationship AutoDetected_7bba9ee0-4b95-4f51-95b2-c98f73182b24
+	crossFilteringBehavior: bothDirections
+	fromColumn: Main_Data.SubCategoryClass
+	toColumn: Category_Summary.SubCategoryClass
+
+relationship AutoDetected_d1d3d66c-8797-4fdd-bc8a-049cbf240f07
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: Category_Growth.SubCategoryClass
+	toColumn: Category_Summary.SubCategoryClass
+

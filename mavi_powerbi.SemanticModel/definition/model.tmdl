@@ -1,0 +1,27 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: tr-TR
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBI_QueryOrder = ["Main_Data","Category_Summary","Store_Summary","Monthly_Trend","Category_Growth","Problematic_Products"]
+
+annotation __LastRPTime = 134313759621940731
+
+annotation PBI_ProTooling = ["WebModelingEdit","DevMode"]
+
+ref table Main_Data
+ref table Category_Summary
+ref table Store_Summary
+ref table Monthly_Trend
+ref table DateTableTemplate_9e5793bc-f265-4859-aec1-d8928c9f4b94
+ref table LocalDateTable_e2f1961f-808a-4399-9359-c3676a490fd0
+ref table Category_Growth
+ref table Problematic_Products
+
+ref cultureInfo en-US
+

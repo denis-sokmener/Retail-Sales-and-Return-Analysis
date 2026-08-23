@@ -1,0 +1,144 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
+  "name": "5c63219b1d1de413b149",
+  "position": {
+    "x": 0,
+    "y": 360.88888888888891,
+    "z": 2000,
+    "height": 359.00146842878121,
+    "width": 640.93979441997067,
+    "tabOrder": 2000
+  },
+  "visual": {
+    "visualType": "scatterChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Store_Summary"
+                    }
+                  },
+                  "Property": "StoreCode"
+                }
+              },
+              "queryRef": "Store_Summary.StoreCode",
+              "nativeQueryRef": "StoreCode",
+              "active": true
+            }
+          ]
+        },
+        "X": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Store_Summary"
+                        }
+                      },
+                      "Property": "Total_Revenue"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Store_Summary.Total_Revenue",
+              "nativeQueryRef": "Total Revenue",
+              "active": true,
+              "displayName": "Total Revenue"
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Store_Summary"
+                        }
+                      },
+                      "Property": "Return_Rate_%"
+                    }
+                  },
+                  "Function": 1
+                }
+              },
+              "queryRef": "Avg(Store_Summary.Return_Rate_%)",
+              "nativeQueryRef": "Average Return Rate (%)",
+              "displayName": "Average Return Rate (%)"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "1be8efea86b0f3ff3bbf",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Store_Summary"
+              }
+            },
+            "Property": "StoreCode"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "6bfc6db0a0ae461ef891",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Store_Summary"
+                  }
+                },
+                "Property": "Total_Revenue"
+              }
+            },
+            "Function": 0
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "476ed8c4e975065f50f4",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Store_Summary"
+                  }
+                },
+                "Property": "Return_Rate_%"
+              }
+            },
+            "Function": 1
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}

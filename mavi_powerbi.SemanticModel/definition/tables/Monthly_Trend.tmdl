@@ -1,0 +1,80 @@
+table Monthly_Trend
+	lineageTag: 3078c77e-39b0-49fe-ad59-2822c472fb02
+
+	column Date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: a5a4150b-eb4e-4d9b-8b74-41bc2f748e28
+		summarizeBy: none
+		sourceColumn: Date
+
+		variation Varyasyon
+			isDefault
+			relationship: b6b62503-5169-47f4-8d20-e43112ca07cc
+			defaultHierarchy: LocalDateTable_e2f1961f-808a-4399-9359-c3676a490fd0.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Monthly_Revenue
+		dataType: double
+		lineageTag: bacf426f-cd1a-4ba7-88f3-0d5c3d971fc6
+		summarizeBy: sum
+		sourceColumn: Monthly_Revenue
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Monthly_Returns
+		dataType: int64
+		formatString: 0
+		lineageTag: c2ed4485-3599-4223-8f7b-0635665cefd5
+		summarizeBy: sum
+		sourceColumn: Monthly_Returns
+
+		annotation SummarizationSetBy = Automatic
+
+	column Discount_Rate_%
+		dataType: double
+		formatString: %0.00;-%0.00;%0.00
+		lineageTag: 758d45c1-fa2b-4151-b2c1-56276a62c1bd
+		summarizeBy: average
+		sourceColumn: Discount_Rate_%
+
+		annotation SummarizationSetBy = User
+
+	column Return_Rate_%
+		dataType: double
+		lineageTag: 89c85464-22b5-4d0b-80ba-2f71c0a93de3
+		summarizeBy: average
+		sourceColumn: Return_Rate_%
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Avg_Order_Value
+		dataType: double
+		lineageTag: 2e3b4ff5-3bab-43a7-8500-9039e02163ed
+		summarizeBy: average
+		sourceColumn: Avg_Order_Value
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition Monthly_Trend = m
+		mode: import
+		source =
+				let
+				  Kaynak = Excel.Workbook(Web.Contents("https://stdyildizedu-my.sharepoint.com/personal/denis_sokmener_std_yildiz_edu_tr/Documents/Uygulamalar/Microsoft Power Query/Uploaded Files/mavi_powerbi_export.xlsx"), null, true),
+				  #"Gezinti 1" = Kaynak{[Item = "Monthly_Trend", Kind = "Sheet"]}[Data],
+				  #"Yükseltilen üst bilgiler" = Table.PromoteHeaders(#"Gezinti 1", [PromoteAllScalars = true]),
+				  #"Değiştirilen sütun türü" = Table.TransformColumnTypes(#"Yükseltilen üst bilgiler", {{"Date", type date}, {"Monthly_Revenue", type number}, {"Monthly_Returns", Int64.Type}, {"Discount_Rate_%", type number}, {"Return_Rate_%", type number}, {"Avg_Order_Value", type number}}, "tr")
+				in
+				  #"Değiştirilen sütun türü"
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,90 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
+  "name": "4551cea909cc13be4b6a",
+  "position": {
+    "x": 640,
+    "y": 343.85093167701859,
+    "z": 3000,
+    "height": 375.65217391304344,
+    "width": 640,
+    "tabOrder": 3000
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Store_Summary"
+                        }
+                      },
+                      "Property": "Return_Rate_%"
+                    }
+                  },
+                  "Function": 1
+                }
+              },
+              "queryRef": "Avg(Store_Summary.Return_Rate_%)",
+              "nativeQueryRef": "Average Store Return Percantage (%)",
+              "displayName": "Average Store Return Percantage (%)"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Aggregation": {
+                "Expression": {
+                  "Column": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "Store_Summary"
+                      }
+                    },
+                    "Property": "Return_Rate_%"
+                  }
+                },
+                "Function": 1
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "2e9061da98f73629bc49",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Store_Summary"
+                  }
+                },
+                "Property": "Return_Rate_%"
+              }
+            },
+            "Function": 1
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}

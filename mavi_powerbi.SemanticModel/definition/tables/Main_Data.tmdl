@@ -1,0 +1,189 @@
+table Main_Data
+	lineageTag: 0b270cb3-883d-4666-9641-17cf07244218
+
+	column DocID
+		dataType: int64
+		formatString: 0
+		lineageTag: 9a0c03d7-4f72-491a-93a0-5e34353ecbfe
+		summarizeBy: none
+		sourceColumn: DocID
+
+		annotation SummarizationSetBy = User
+
+	column StoreCode
+		dataType: int64
+		formatString: 0
+		lineageTag: c56d231f-e5a9-46e0-a0da-01e527935f33
+		summarizeBy: none
+		sourceColumn: StoreCode
+
+		annotation SummarizationSetBy = Automatic
+
+	column ProductItemCode
+		dataType: string
+		lineageTag: 6e0d6e1a-1261-4ac0-a268-c39c7f5ca067
+		summarizeBy: none
+		sourceColumn: ProductItemCode
+
+		annotation SummarizationSetBy = Automatic
+
+	column ProductCode
+		dataType: string
+		lineageTag: fd9817c0-1982-4d19-b2c6-7f3184580aa4
+		summarizeBy: none
+		sourceColumn: ProductCode
+
+		annotation SummarizationSetBy = Automatic
+
+	column Date
+		dataType: int64
+		formatString: 0
+		lineageTag: 6734f8d5-cb24-44f2-808e-6af72129147c
+		summarizeBy: none
+		sourceColumn: Date
+
+		annotation SummarizationSetBy = User
+
+	column ReturnFlag
+		dataType: int64
+		formatString: 0
+		lineageTag: 35cf4804-c882-4d0d-8506-8f844367ca70
+		summarizeBy: sum
+		sourceColumn: ReturnFlag
+
+		annotation SummarizationSetBy = Automatic
+
+	column Time
+		dataType: dateTime
+		formatString: Long Time
+		lineageTag: 9c3c74df-d9eb-455c-bda8-f802126fe027
+		summarizeBy: none
+		sourceColumn: Time
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Time
+
+	column Quantity
+		dataType: int64
+		formatString: 0
+		lineageTag: edc29c8a-6a62-496c-80e0-9d393d5b7f4a
+		summarizeBy: sum
+		sourceColumn: Quantity
+
+		annotation SummarizationSetBy = Automatic
+
+	column Amount
+		dataType: double
+		lineageTag: 46df0d0b-ebbd-4136-861c-100ac93f6a7b
+		summarizeBy: sum
+		sourceColumn: Amount
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column DiscountAmount
+		dataType: double
+		lineageTag: 081ec5a9-999f-42da-af73-d86d57019df7
+		summarizeBy: sum
+		sourceColumn: DiscountAmount
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ChangeCardFlag
+		dataType: int64
+		formatString: 0
+		lineageTag: 795b108d-1952-4d83-87df-c1bc78956fda
+		summarizeBy: sum
+		sourceColumn: ChangeCardFlag
+
+		annotation SummarizationSetBy = Automatic
+
+	column Class
+		dataType: string
+		lineageTag: 67c44724-fac4-46c8-8f2d-40cdae540feb
+		summarizeBy: none
+		sourceColumn: Class
+
+		annotation SummarizationSetBy = Automatic
+
+	column MainCategory
+		dataType: string
+		lineageTag: 37e40cb1-7bf9-4149-a575-bbd363e9ae16
+		summarizeBy: none
+		sourceColumn: MainCategory
+
+		annotation SummarizationSetBy = Automatic
+
+	column Category
+		dataType: string
+		lineageTag: 42c66e18-10d1-4db6-a24f-fd2b89f1e01d
+		summarizeBy: none
+		sourceColumn: Category
+
+		annotation SummarizationSetBy = Automatic
+
+	column SubCategory
+		dataType: string
+		lineageTag: 92d32361-2e72-4f3e-b298-8a647159848c
+		summarizeBy: none
+		sourceColumn: SubCategory
+
+		annotation SummarizationSetBy = Automatic
+
+	column SubCategoryClass
+		dataType: string
+		lineageTag: 7d37b7ef-30ff-4065-94ae-0ca1336832d5
+		summarizeBy: none
+		sourceColumn: SubCategoryClass
+
+		annotation SummarizationSetBy = Automatic
+
+	column MainCategoryEN
+		dataType: string
+		lineageTag: 26c09ba0-c516-458e-b003-d6bd59af8ec7
+		summarizeBy: none
+		sourceColumn: MainCategoryEN
+
+		annotation SummarizationSetBy = Automatic
+
+	column CategoryEN
+		dataType: string
+		lineageTag: 13d1d553-b3a2-40ce-9f8c-63f7c3a30986
+		summarizeBy: none
+		sourceColumn: CategoryEN
+
+		annotation SummarizationSetBy = Automatic
+
+	column SubCategoryEN
+		dataType: string
+		lineageTag: 82d85cde-62d2-4290-821d-9fd630854f56
+		summarizeBy: none
+		sourceColumn: SubCategoryEN
+
+		annotation SummarizationSetBy = Automatic
+
+	column SubCategoryClassEN
+		dataType: string
+		lineageTag: 0df4d47c-9df3-4e08-8c6d-054e9a0b27eb
+		summarizeBy: none
+		sourceColumn: SubCategoryClassEN
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Main_Data = m
+		mode: import
+		source =
+				let
+				  Kaynak = Excel.Workbook(Web.Contents("https://stdyildizedu-my.sharepoint.com/personal/denis_sokmener_std_yildiz_edu_tr/Documents/Uygulamalar/Microsoft Power Query/Uploaded Files/mavi_powerbi_export.xlsx"), null, true),
+				  #"Gezinti 1" = Kaynak{[Item = "Main_Data", Kind = "Sheet"]}[Data],
+				  #"Yükseltilen üst bilgiler" = Table.PromoteHeaders(#"Gezinti 1", [PromoteAllScalars = true]),
+				  #"Değiştirilen sütun türü" = Table.TransformColumnTypes(#"Yükseltilen üst bilgiler", {{"DocID", Int64.Type}, {"StoreCode", Int64.Type}, {"ProductItemCode", type text}, {"ProductCode", type text}, {"Date", Int64.Type}, {"ReturnFlag", Int64.Type}, {"Time", type time}, {"Quantity", Int64.Type}, {"Amount", type number}, {"DiscountAmount", type number}, {"ChangeCardFlag", Int64.Type}, {"Class", type text}, {"MainCategory", type text}, {"Category", type text}, {"SubCategory", type text}, {"SubCategoryClass", type text}, {"MainCategoryEN", type text}, {"CategoryEN", type text}, {"SubCategoryEN", type text}, {"SubCategoryClassEN", type text}}, "tr")
+				in
+				  #"Değiştirilen sütun türü"
+
+	annotation PBI_ResultType = Table
+

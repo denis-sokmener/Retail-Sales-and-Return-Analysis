@@ -1,0 +1,124 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
+  "name": "59a74b713195799ef33e",
+  "position": {
+    "x": 640.93979441997067,
+    "y": 0,
+    "z": 1000,
+    "height": 360.88105726872249,
+    "width": 639.06020558002945,
+    "tabOrder": 1000
+  },
+  "visual": {
+    "visualType": "waterfallChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Category_Growth"
+                    }
+                  },
+                  "Property": "SubCategoryClass"
+                }
+              },
+              "queryRef": "Category_Growth.SubCategoryClass",
+              "nativeQueryRef": "Sub Category Class",
+              "active": true,
+              "displayName": "Sub Category Class"
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Category_Growth"
+                        }
+                      },
+                      "Property": "Quantity_Change"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(Category_Growth.Quantity_Change)",
+              "nativeQueryRef": "Total Quantity Change",
+              "displayName": "Total Quantity Change"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Aggregation": {
+                "Expression": {
+                  "Column": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "Category_Growth"
+                      }
+                    },
+                    "Property": "Quantity_Change"
+                  }
+                },
+                "Function": 0
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "0044d2d4804c96ef79be",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Category_Growth"
+              }
+            },
+            "Property": "SubCategoryClass"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "fb434f58f874b7b334f1",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Category_Growth"
+                  }
+                },
+                "Property": "Quantity_Change"
+              }
+            },
+            "Function": 0
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}

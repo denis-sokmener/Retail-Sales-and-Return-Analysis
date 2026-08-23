@@ -1,0 +1,42 @@
+table Problematic_Products
+	lineageTag: 648b9896-e906-4d63-ad6b-4bffcf1e45f1
+
+	column ProductCode
+		dataType: string
+		lineageTag: 826d55f0-28a7-4a22-b80a-f59f4d8c6a80
+		summarizeBy: none
+		sourceColumn: ProductCode
+
+		annotation SummarizationSetBy = Automatic
+
+	column ChangeCard_Count
+		dataType: int64
+		formatString: 0
+		lineageTag: 85f29da8-29a7-431c-9b59-d8998a1fd994
+		summarizeBy: sum
+		sourceColumn: ChangeCard_Count
+
+		annotation SummarizationSetBy = Automatic
+
+	column Total_Returns
+		dataType: int64
+		formatString: 0
+		lineageTag: 86612ee2-b736-4b7f-ae7d-73f0be3af461
+		summarizeBy: sum
+		sourceColumn: Total_Returns
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Problematic_Products = m
+		mode: import
+		source =
+				let
+				  Kaynak = Excel.Workbook(Web.Contents("https://stdyildizedu-my.sharepoint.com/personal/denis_sokmener_std_yildiz_edu_tr/Documents/Uygulamalar/Microsoft Power Query/Uploaded Files/mavi_powerbi_export.xlsx"), null, true),
+				  #"Gezinti 1" = Kaynak{[Item = "Problematic_Products", Kind = "Sheet"]}[Data],
+				  #"Yükseltilen üst bilgiler" = Table.PromoteHeaders(#"Gezinti 1", [PromoteAllScalars = true]),
+				  #"Değiştirilen sütun türü" = Table.TransformColumnTypes(#"Yükseltilen üst bilgiler", {{"ProductCode", type text}, {"ChangeCard_Count", Int64.Type}, {"Total_Returns", Int64.Type}}, "tr")
+				in
+				  #"Değiştirilen sütun türü"
+
+	annotation PBI_ResultType = Table
+

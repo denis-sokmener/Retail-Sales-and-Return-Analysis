@@ -1,0 +1,191 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
+  "name": "11eb073f964aed5661e3",
+  "position": {
+    "x": 640.87074829931976,
+    "y": 360.48979591836735,
+    "z": 3000,
+    "height": 358.74829931972789,
+    "width": 639.12925170068024,
+    "tabOrder": 3000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Problematic_Products"
+                    }
+                  },
+                  "Property": "ProductCode"
+                }
+              },
+              "queryRef": "Problematic_Products.ProductCode",
+              "nativeQueryRef": "ProductCode"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Problematic_Products"
+                        }
+                      },
+                      "Property": "Total_Returns"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(Problematic_Products.Total_Returns)",
+              "nativeQueryRef": "Toplam Total_Returns"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Problematic_Products"
+                        }
+                      },
+                      "Property": "ChangeCard_Count"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(Problematic_Products.ChangeCard_Count)",
+              "nativeQueryRef": "Toplam ChangeCard_Count"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Aggregation": {
+                "Expression": {
+                  "Column": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "Problematic_Products"
+                      }
+                    },
+                    "Property": "Total_Returns"
+                  }
+                },
+                "Function": 0
+              }
+            },
+            "direction": "Descending"
+          }
+        ]
+      }
+    },
+    "objects": {
+      "columnWidth": [
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "340.730427498621D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Sum(Problematic_Products.Total_Returns)"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "106.29251700680273D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Problematic_Products.ProductCode"
+          }
+        }
+      ],
+      "columnHeaders": [
+        {
+          "properties": {}
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "c5ed45e69336b801b6b5",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Problematic_Products"
+              }
+            },
+            "Property": "ProductCode"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "31ae2f54d19445489c1b",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Problematic_Products"
+                  }
+                },
+                "Property": "Total_Returns"
+              }
+            },
+            "Function": 0
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "89fb55bda2bb19e8cf69",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Problematic_Products"
+                  }
+                },
+                "Property": "ChangeCard_Count"
+              }
+            },
+            "Function": 0
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}

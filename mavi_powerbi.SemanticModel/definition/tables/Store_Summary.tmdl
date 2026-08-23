@@ -1,0 +1,62 @@
+table Store_Summary
+	lineageTag: 1f696ac8-75fd-4bdf-b171-cc9af9c1c0c5
+
+	column StoreCode
+		dataType: int64
+		formatString: 0
+		lineageTag: 7aab5756-79f0-49b2-8e4e-1c3d4312e826
+		summarizeBy: none
+		sourceColumn: StoreCode
+
+		annotation SummarizationSetBy = Automatic
+
+	column Total_Sold
+		dataType: int64
+		formatString: 0
+		lineageTag: a751fc80-c8c2-4413-b862-2e613b189552
+		summarizeBy: sum
+		sourceColumn: Total_Sold
+
+		annotation SummarizationSetBy = User
+
+	column Total_Returned
+		dataType: int64
+		formatString: 0
+		lineageTag: 1dcd3972-17c9-4b66-aafd-dd2b2d7aadf6
+		summarizeBy: sum
+		sourceColumn: Total_Returned
+
+		annotation SummarizationSetBy = User
+
+	column Total_Revenue
+		dataType: double
+		lineageTag: 1c638bf7-dfea-41cb-bb01-e33987164d28
+		summarizeBy: sum
+		sourceColumn: Total_Revenue
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Return_Rate_%
+		dataType: double
+		formatString: 0.00
+		lineageTag: 5c253170-4855-490e-afb1-94d0a834899b
+		summarizeBy: average
+		sourceColumn: Return_Rate_%
+
+		annotation SummarizationSetBy = User
+
+	partition Store_Summary = m
+		mode: import
+		source =
+				let
+				  Kaynak = Excel.Workbook(Web.Contents("https://stdyildizedu-my.sharepoint.com/personal/denis_sokmener_std_yildiz_edu_tr/Documents/Uygulamalar/Microsoft Power Query/Uploaded Files/mavi_powerbi_export.xlsx"), null, true),
+				  #"Gezinti 1" = Kaynak{[Item = "Store_Summary", Kind = "Sheet"]}[Data],
+				  #"Yükseltilen üst bilgiler" = Table.PromoteHeaders(#"Gezinti 1", [PromoteAllScalars = true]),
+				  #"Değiştirilen sütun türü" = Table.TransformColumnTypes(#"Yükseltilen üst bilgiler", {{"StoreCode", Int64.Type}, {"Total_Sold", Int64.Type}, {"Total_Returned", Int64.Type}, {"Total_Revenue", type number}, {"Return_Rate_%", type number}}, "tr")
+				in
+				  #"Değiştirilen sütun türü"
+
+	annotation PBI_ResultType = Table
+
