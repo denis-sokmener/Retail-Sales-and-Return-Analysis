@@ -1,6 +1,6 @@
 # Mavi Retail Sales and Return Analysis
 
-This project is an end-to-end business intelligence workflow analyzing Mavi store sales data using Python and Power BI. The objective goes beyond standard revenue tracking to identify product-level return trends, discount dependency, and inflation-adjusted volume growth.
+This project is an end-to-end business intelligence workflow analyzing Mavi store sales data using Python, Excel and Power BI. The objective goes beyond standard revenue tracking to identify product-level return trends, discount dependency, and inflation-adjusted volume growth.
 
 ## Dashboard Previews
 
