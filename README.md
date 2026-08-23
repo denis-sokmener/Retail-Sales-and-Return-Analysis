@@ -25,6 +25,6 @@ This project is an end-to-end business intelligence workflow analyzing Mavi stor
 
 ## Technologies Used
 
-* **Data Preparation:** Python, Pandas
+* **Data Preparation:** Python, Pandas, Excel
 * **Visualization:** Power BI
 * **Version Control:** Git, GitHub Project Structure (.pbip)
